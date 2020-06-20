@@ -2,6 +2,7 @@ import React,{ useState }  from 'react';
 
 import './App.css';
 import { BrowserRouter, Switch, Route } from "react-router-dom"
+import PrivateRoute from './components/PrivateRoute'
 import { ToastContainer, toast } from 'react-toastify';
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -12,6 +13,8 @@ import RestaurantPage from './pages/RestaurantPage'
 import ActivityPage from './pages/ActivityPage'
 import RoomsPage from './pages/RoomsPage'
 import RoomPage from './pages/RoomPage'
+import BookPage from './pages/BookPage'
+import BookingPage from './pages/BookingPage'
 import RegisterPage from './pages/RegisterPage'
 import AuthContext from './contexts/AuthContext'
 import authAPI from './services/authAPI'
@@ -37,13 +40,15 @@ function App() {
     <BrowserRouter>
       <Navbar />
         <Switch>
+          <Route path="/login" component={LoginPage}/>
+          <Route path="/Register" component={RegisterPage}/>
+          <PrivateRoute path="/rooms/:id/book" component={BookPage} />
+          <PrivateRoute path="/booking/:id" component={BookingPage} />
           <Route path="/rooms/:id" component={RoomPage} />
           <Route path="/rooms" component={RoomsPage}/>
-          <Route path="/restaurant" component={RestaurantPage}/>
-          <Route path="/Register" component={RegisterPage}/>
-          <Route path="/activity" component={ActivityPage}/>
-          <Route path="/login" component={LoginPage}/>
           <Route path="/compte" component={ComptePage}/>          
+          <Route path="/restaurant" component={RestaurantPage}/>
+          <Route path="/activity" component={ActivityPage}/>   
           <Route path="/" component={HomePage} />
         </Switch>
         <Footer />

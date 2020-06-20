@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Field from '../components/forms/Field';
 import {Link} from "react-router-dom"
 import Axios from "axios"
+import { toast } from 'react-toastify'
 
 const RegisterPage = ({history}) => {
 
@@ -36,13 +37,14 @@ const RegisterPage = ({history}) => {
         if(user.password !== user.passwordConfirm){
             apiErrors.passwordConfirm="Votre confirmation de mot de passe n'est pas conforme à l'original"
             setErrors(apiErrors)
+            toast.error("Votre confirmation de mot de passe n'est pas conforme à l'original !")
             // on arrete si ce n'est pas bon 
             return
         }
         try{
             await Axios.post("http://marquisedesanges.melissadm.net/api/users", user)
             setErrors({})
-            history.replace("/login")
+            history.replace("/")
         }catch({response}){
             const {violations} = response.data
             if(violations){
@@ -51,6 +53,7 @@ const RegisterPage = ({history}) => {
                     apiErrors[propertyPath] = message
                 })
                 setErrors(apiErrors)
+                toast.error("Vous devez remplir les champs !")
             }
         }
     }
@@ -106,9 +109,9 @@ const RegisterPage = ({history}) => {
                     value={user.passwordConfirm}
                     onChange={handleChange}
                 />
-                 <div classNameName="form-group">
-                    <button type="submit" classNameName="btn btn-success">Confirmation</button>
-                    <Link to="/login" classNameName="btn btn-secondary">Retour</Link>
+                 <div className="form-group">
+                    <button type="submit" className="btn btn-success">Confirmation</button>
+                    <Link to="/login" className="btn btn-secondary">Retour</Link>
                 </div>
             </form>
             </div>

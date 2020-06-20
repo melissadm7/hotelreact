@@ -2,13 +2,33 @@ import React, {useState, useEffect} from 'react'
 import roomsAPI from "../services/roomsAPI"
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import ShowIR from '../components/ShowIR'
+import ShowComment from '../components/ShowComment'
 
 
 
 const RoomPage = (props) => {
 
     var {id} = props.match.params
-    const [room, setRoom] = useState({})
+    const [room, setRoom] = useState({
+        id: "",
+        title: "",
+        price: "",
+        introduction: "",
+        pool: "",
+        sauna: "",
+        cover: "",
+        bain: "",
+        wifi: "",
+        sauna: "",
+        allin: "",
+        clim: "",
+        kitchen: "",
+        imageRooms: "",
+        comments: ""
+
+
+    })
     
     const fetchRoom= async id => {
         try{
@@ -22,6 +42,18 @@ const RoomPage = (props) => {
     useEffect(()=>{
         fetchRoom(id)
     }, []);
+
+    const imageRoom = Object.keys(room.imageRooms).map(key => {
+        return (
+            <ShowIR key={key} imageR={room.imageRooms[key]} />
+        )
+    })
+    
+    const comments = Object.keys(room.comments).map(key => {
+        return (
+            <ShowComment key={key} comment={room.comments[key]} />
+        )
+    })
     
 return (   
  
@@ -37,15 +69,7 @@ return (
                 <div className="bd-example">
                     <div id="carouselExampleCaptions" className="carousel slidec" data-ride="carousel">
                         <ol className="carousel-indicators">
-                            {/* {imageRooms.map(rooms =>
-                                <li data-target="#carouselExampleCaptions" data-slide-to="{{ loop.index0 }}" {% if loop.first %}class="active"{% endif %}></li>
-                            )} */}
-                        </ol>
-                        {/* <div className="carousel-inner">        
-                               {room.imageRooms.map(image=>
-                                    <li>{image.image}</li>
-                                )}
-                        </div> */}
+                            {imageRoom}
                         <a className="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                             <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                             <span className="sr-only">Previous</span>
@@ -54,7 +78,7 @@ return (
                             <span className="carousel-control-next-icon" aria-hidden="true"></span>
                             <span className="sr-only">Next</span>
                         </a>
-                    </div>
+                    </ol>
                 </div>
             </div>
             <div className="col-md-4 col-12">
@@ -70,7 +94,7 @@ return (
                     </div>
                     <div className="card-body">
                         <div className="card-title"style={{textAlign:"center"}}>
-                            <Link to="/">
+                            <Link to={`/rooms/${room.id}/book`}>
                             <h5 className="bouton">RESERVER<i className="fas fa-chevron-circle-right"></i></h5></Link>
                         </div>
                     </div>
@@ -105,32 +129,9 @@ return (
                     </div>
                 </div>
                 <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                    {/* {% if room.comments | length > 0 %}
-                        <div class="alert alert" style="background-color:white;">
-                            <h4 class="alert-heading text-center">
-                                <div class="row align-items-center">
-                                    <div class="col">
-                                        {% include 'partials/rating.html.twig' with {'rating': room.avgRatings }%}
-                                        <br><small>(Cette moyenne est calculée sur la base de {{ room.comments | length }} avis)</small>
-                                    </div>
-                                </div>
-                            </h4>
-                        </div>
-                        {% for comment in room.comments %}
-                            <div class="bg-light rounded mb-3 py-3 px-3">
-                                <strong>{{ comment.author.firstName }}</strong> a dit: 
-                                <blockquote>
-                                    {{comment.content | nl2br }}
-                                </blockquote>
-                                <strong>Note donnée: </strong>
-                                {% include 'partials/rating.html.twig' with {'rating': comment.rating} %}
-                            </div>
-                        {% endfor %}
-
-                    {% else %}
-                        <h4>Cette chambre n'a pas encore reçu de commentaire ...</h4>
-                    {% endif %} */}
+                    {comments}
                 </div>
+            </div>
             </div>
             </div>
         </div>
