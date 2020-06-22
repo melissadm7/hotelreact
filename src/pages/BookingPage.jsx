@@ -1,15 +1,17 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect,useContext} from 'react'
 import Field from '../components/forms/Field';
 import bookingsAPI from "../services/bookingAPI"
 import {Link} from "react-router-dom"
 import Axios from "axios"
 import { toast } from 'react-toastify'
 import moment from 'moment'
+import Comments from '../components/Comments';
+import AuthContext from '../contexts/AuthContext'
 
 
 const BookingPage = (props) => {
     var {id} = props.match.params
-
+    const {isAuthenticated } = useContext(AuthContext)
     const [booking, setBooking] = useState({
         id: "",
         startDate: "",
@@ -87,7 +89,15 @@ return (
                     {% else %}
                         <p>Vous ne pourrez pas noter cette annonce tant que votre voyage ne sera pas terminé.</p>
                     {% endif %} */}
-                
+                {(isAuthenticated) ?
+           ( <> <Comments id={id} /> </>) : ( 
+           <> 
+         
+         <div className="error-message"> Vous devez vous connecter pour pouvoir commenter</div> 
+           
+           </>
+
+           )     }
                 </div> 
             </div>
             <div className="col-md-6">

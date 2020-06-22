@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import roomsAPI from "../services/roomsAPI"
+import AuthContext from '../contexts/AuthContext'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import ShowIR from '../components/ShowIR'
@@ -9,7 +10,11 @@ import { Carousel } from 'react-responsive-carousel';
 
 
 
+
 const RoomPage = (props) => {
+
+
+    const {isAuthenticated } = useContext(AuthContext)
 
     var {id} = props.match.params
     const [room, setRoom] = useState({
@@ -120,13 +125,36 @@ return (
                     </div>
                 </div>
                 <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                    {comments}
+                <div className="alert alert-info" style={{backgroundColor:"#23232e", color:'#f7efeb'}}>
+                
+                     <div className="row align-items-center">
+                     <h2 className="mb-3">Commentaires</h2>
+                       
+                     </div>
+               
+             </div>
+            {( room.comments.length  > 0) ? (
+              <>
+            {comments}
+           </> ): (
+           <> 
+           
+           <h3>Ce Grand Prix n'a pas encore reçu de commentaire ...</h3>
+           
+           </> )}
+           
+               
+  
+       
+
+</div>
+
                 </div>
             </div>
             </div>
             </div>
         </div>
-    </div>
+    
 
 
 </>

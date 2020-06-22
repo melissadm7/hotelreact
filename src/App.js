@@ -1,5 +1,4 @@
 import React,{ useState }  from 'react';
-
 import './App.css';
 import { BrowserRouter, Switch, Route , withRouter} from "react-router-dom"
 import PrivateRoute from './components/PrivateRoute'
@@ -17,10 +16,13 @@ import BookPage from './pages/BookPage'
 import BookingPage from './pages/BookingPage'
 import RegisterPage from './pages/RegisterPage'
 import AuthContext from './contexts/AuthContext'
+import MonComptePage from './pages/MonComptePage'
+import ModifPasswordPage from './pages/ModifPasswordPage'
 import authAPI from './services/authAPI'
 
 
 import {Bootstrap, Grid, Row, Col} from 'react-bootstrap';
+authAPI.setup() //permet de garder le token au rechargement
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(authAPI.isAuthenticated())
@@ -41,12 +43,14 @@ function App() {
       <NavbarWithRouter />
         <Switch>
           <Route path="/login" component={LoginPage}/>
-          <Route path="/Register" component={RegisterPage}/>
+          <Route path="/Register" component={RegisterPage}/>    
+          <PrivateRoute path="/passwordupdate" component={ModifPasswordPage}/>
+          <PrivateRoute path="/myaccount" component={MonComptePage}/>      
           <PrivateRoute path="/rooms/:id/book" component={BookPage} />
           <PrivateRoute path="/booking/:id" component={BookingPage} />
+          <PrivateRoute path="/compte" component={ComptePage}/>          
           <Route path="/rooms/:id" component={RoomPage} />
           <Route path="/rooms" component={RoomsPage}/>
-          <Route path="/compte" component={ComptePage}/>          
           <Route path="/restaurant" component={RestaurantPage}/>
           <Route path="/activity" component={ActivityPage}/>   
           <Route path="/" component={HomePage} />

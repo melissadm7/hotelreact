@@ -17,6 +17,6 @@ function updateUser(id, user){
 export default {
     findAll: findAll,
     find: find,
-    updateUser:updateUser
+    update:updateUser
 
 }

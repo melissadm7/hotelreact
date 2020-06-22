@@ -16,7 +16,7 @@ const Footer = (props) => {
         setIsAuthenticated(false)
         setIsAdmin(false)
         toast.info("Vous êtes déconnecté")
-        props.history.push("/login")
+        props.history.push("/")
     }
 
     return (
