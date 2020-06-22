@@ -63,9 +63,7 @@ footer{
 i{
   color:#deb666
 }
-i:hover{
-  color:black;
-}
+
 .inverse{
   color:black;
 }
@@ -289,13 +287,16 @@ i:hover{
   color:white;
 }
 .resto .coverimg{
+  margin-top:120px;
   height: 310px;
   width: 350px;
 }
 .image-Act-left{
   position: absolute;
-  margin-left: 157px;
-  margin-top: -180px;
+  margin-left: -207px;
+  margin-top: 240px;
+  height: 310px;
+  width: 350px;
 }
 hr{
   border:1px solid  white;
@@ -395,6 +396,22 @@ a:link {
   font-size:20px;
 }
 
+.carousel .slider-wrapper {
+  overflow: hidden;
+  margin: auto;
+  width: 100%;
+  transition: height .15s ease-in;
+  height: 50vh;
+}
+.carousel carousel-slider{
+  min-width: 100%;
+  min-height:100%;
+  object-fit:cover;
+}
+
+.carousel-status{
+  display:none;
+}
 /**********************PAGE ROOM SHOW*******************************/
 
 
@@ -552,8 +569,9 @@ input[type=text] , input[type=password], input[type=email] {
 @media all and (max-width: 982px){
 
 /**********************Slide resto*******************************/
-.carteresto{
-   margin-top:100px;
+.carteresto {
+  margin-top: 100px;
+  margin-bottom: 100px;
 }
   .footercard{
       font-size: 18px;
@@ -593,9 +611,9 @@ input[type=text] , input[type=password], input[type=email] {
   }
 
   /**********************Slide resto*******************************/
-   .image-Act-left{
-       margin-left:24px;
-   }
+  .image-Act-left {
+    margin-left: -222px;
+}
   /**********************Slide acitivity*******************************/
   .activity{
       font-size: 8vw;
@@ -642,9 +660,17 @@ input[type=text] , input[type=password], input[type=email] {
   
 @media all and (max-width: 390px){
       /**********************Slide resto*******************************/
-
-      .image-Act-left {
-          margin-left: -12px;
+      .resto .coverimg {
+        margin-top: 100px;
+        height: 210px;
+        width: 250px;
+    }
+      .image-Act-left{
+        position: absolute;
+        margin-left: -165px;
+        margin-top: 220px;
+        height: 250px;
+        width: 250px;
       }
       /**********************Slide room*******************************/
       .bouton {

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import ShowIR from '../components/ShowIR'
 import ShowComment from '../components/ShowComment'
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 
 
@@ -66,20 +68,9 @@ return (
     <div className="container">
         <div className="row pt-5">
             <div className="col-md-8 col-12">
-                <div className="bd-example">
-                    <div id="carouselExampleCaptions" className="carousel slidec" data-ride="carousel">
-                        <ol className="carousel-indicators">
-                            {imageRoom}
-                        <a className="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span className="sr-only">Previous</span>
-                        </a>
-                        <a className="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span className="sr-only">Next</span>
-                        </a>
-                    </ol>
-                </div>
+            <Carousel>
+                {imageRoom}
+            </Carousel>
             </div>
             <div className="col-md-4 col-12">
                 <div className="card mb-3" style={{maxWidth:"38rem",position:"relative",backgroundImage: "url(https://livedemo00.template-help.com/wt_prod-20821/images/bg-price-1920x1128.png)",backgroundColor:"#2C2C2C"}}>
@@ -136,7 +127,7 @@ return (
             </div>
         </div>
     </div>
-</div>
+
 
 </>
 );

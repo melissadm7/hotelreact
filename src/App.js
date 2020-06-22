@@ -1,7 +1,7 @@
 import React,{ useState }  from 'react';
 
 import './App.css';
-import { BrowserRouter, Switch, Route } from "react-router-dom"
+import { BrowserRouter, Switch, Route , withRouter} from "react-router-dom"
 import PrivateRoute from './components/PrivateRoute'
 import { ToastContainer, toast } from 'react-toastify';
 import Navbar from './components/Navbar'
@@ -25,8 +25,8 @@ import {Bootstrap, Grid, Row, Col} from 'react-bootstrap';
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(authAPI.isAuthenticated())
   const [isAdmin, setIsAdmin] = useState(authAPI.isAdmin())
-
-
+  const NavbarWithRouter = withRouter(Navbar)
+    
     // on donne les informations à la forme de notre context
     const contextValue = {
       isAuthenticated: isAuthenticated,
@@ -38,7 +38,7 @@ function App() {
 <>
 <AuthContext.Provider value={contextValue}>
     <BrowserRouter>
-      <Navbar />
+      <NavbarWithRouter />
         <Switch>
           <Route path="/login" component={LoginPage}/>
           <Route path="/Register" component={RegisterPage}/>

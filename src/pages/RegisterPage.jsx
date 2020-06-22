@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState,  useContext } from 'react'
 import Field from '../components/forms/Field';
 import {Link} from "react-router-dom"
+import { Redirect } from "react-router-dom"
+import AuthContext from '../contexts/AuthContext'
 import Axios from "axios"
 import { toast } from 'react-toastify'
 
@@ -29,6 +31,7 @@ const RegisterPage = ({history}) => {
         setUser({...user, [name]: value})
     }
 
+    const {isAuthenticated} = useContext(AuthContext)
     // gestion de la soumission du formulaire 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -58,7 +61,9 @@ const RegisterPage = ({history}) => {
         }
     }
 
-    return ( 
+    return isAuthenticated ? ( 
+        <Redirect to="/" /> 
+     ) : (
         <>
 <div className="slide">
     <div className="container p-5">

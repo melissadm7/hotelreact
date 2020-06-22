@@ -4,6 +4,7 @@ import AuthContext from '../contexts/AuthContext'
 import Field from '../components/forms/Field'
 import {Link, NavLink} from "react-router-dom"
 import jwtDecode from "jwt-decode"
+import { Redirect } from "react-router-dom"
 
 
 import { toast } from 'react-toastify'
@@ -19,7 +20,7 @@ const LoginPage = (props) => {
 })
 
 const [error, setError ] = useState("")
-
+const {isAuthenticated} = useContext(AuthContext)
 const handleChange = (event) => {
 const value = event.currentTarget.value
 const name = event.currentTarget.name
@@ -58,7 +59,9 @@ const handleSubmit = async (event) => {
     }
 }
 
-return (
+return isAuthenticated ? ( 
+    <Redirect to="/" /> 
+ ) : (
         <>
         <div className="slideConnexion">
             <div className="container">
