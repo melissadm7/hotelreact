@@ -5,7 +5,7 @@ function findAll(){
     .then(response => response.data['hydra:member'])
 }
 function find(id){
-    return Axios.get(`http://marquisedesanges.melissadm.net/api/bookings/${id}`)
+    return Axios.get(`http://marquisedesanges.melissadm.net/api/users/${id}/bookings`)
                 .then(response=>response.data)
 }
 

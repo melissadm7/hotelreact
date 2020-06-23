@@ -61,12 +61,10 @@ return (
                         <dd className="col-md-8">{formatDate(booking.startDate)}</dd>
                         <dt className="col-md-4">Date de départ</dt>
                         <dd className="col-md-8">{formatDate(booking.endDate)}</dd>
-                        <dt className="col-md-4">Nombre de nuits</dt>
-                        <dd className="col-md-8"></dd>
                         <dt className="col-md-4">Montant total</dt>
                         <dd className="col-md-8">{booking.amount}&euro;</dd>
                         <dt className="col-md-4">Commentaire</dt>
-                        <dd className="col-md-8"></dd>
+                        <dd className="col-md-8">{booking.comment}</dd>
                     </div>
 
                 </div>

@@ -49,6 +49,7 @@ const BookPage = (props) => {
     const [theEndDate, setTheEndDate] = useState(new Date()) 
 
     const [booking, setBooking] = useState({
+        id:"",
         startDate: "",
         endDate: "",
         amount: "",
@@ -58,6 +59,7 @@ const BookPage = (props) => {
     })
 
     const [errors, setErrors ] = useState({
+        id:"",
         startDate: "",
         endDate: "",
         amount: "",
@@ -168,7 +170,7 @@ return (
 <div className="slide">
     <div className="container pt-5">
         <form onSubmit={handleSubmit}>
-<h1 className="mb-3">Réservation pour la chambre : <i></i></h1>
+<h1 className="mb-3">Réservation pour la chambre : <i>{room.title}</i></h1>
        
         <div className="row pt-5">
             <div className="col-md-7 col-xs-12">

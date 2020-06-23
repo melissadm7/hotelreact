@@ -8,13 +8,16 @@ import ShowHomeComment from '../components/ShowHomeComment'
 import ShowHomeImage from '../components/ShowHomeImage'
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import AliceCarousel from 'react-alice-carousel'
+import 'react-alice-carousel/lib/alice-carousel.css'
 
 
 
 
 const HomePage = (props) => {
 
-
+    const handleOnDragStart = (e) => e.preventDefault()
+    
     const [restaurants, setRestaurants] = useState([])
 
     const fetchRestaurants = async () => {
@@ -82,7 +85,7 @@ return (
     <div className="logo">
         <img src="images/logogrand.png" alt="" />
         <div className="text-center">
-            <i className="fa fa-star fa-2x p-2"></i><i className="fa fa-star fa-2x  p-2"></i><i className="fa fa-star fa-2x  p-2"></i><i className="fa fa-star fa-2x  p-2"></i><i className="fa fa-star fa-2x  p-2"></i>
+            
         </div>
     </div>
 </div>
@@ -128,16 +131,16 @@ return (
                     <div className="bloc col-lg-6 col-md-12 ">
                      <div className="carousel slides" data-ride="carousel" id="quote-carousel">
 
-                    <div className="carousel-inner">        
-                        
-                        <Carousel>
-                        {comments.slice(0,4).sort((b,a)=> a.title - b.content ).map((comments,key) =>
+                           
+      
+                         <AliceCarousel>
+                            {comments.slice(0,4).sort((b,a)=> a.title - b.content ).map((comments,key) =>
                        <>
                              {commentH} 
                         </>
                              )}
-                         </Carousel>                    
-                    </div>
+                       </AliceCarousel>                  
+                 
                 </div>
             </div>
         </div>

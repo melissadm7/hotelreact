@@ -1,21 +1,35 @@
 import React, {useState, useEffect,useContext} from 'react'
 import Field from '../components/forms/Field';
-import bookingsAPI from "../services/bookingAPI"
+import bookingAPI from "../services/bookingAPI"
 import {Link} from "react-router-dom"
 import Axios from "axios"
 import { toast } from 'react-toastify'
 import moment from 'moment'
+import jwtDecode from "jwt-decode"
 import Comments from '../components/Comments';
 import AuthContext from '../contexts/AuthContext'
+import ShowBooking from '../components/ShowBooking'
 
 
 const MyBookingPage = (props) => {
-const [bookings, setBookings] = useState([])
+
+    const token = window.localStorage.getItem("authToken")
+    const jwtData = jwtDecode(token)
+    var id= jwtData.id
+
+const [bookings, setBookings] = useState({
+    id:"",
+    startDate: "",
+    endDate: "",
+    amount: "",
+    comment:"",
+    room:{}
+})
   
   const [loading, setLoading] = useState(true)
-    const fetchBookings= async () => {
+    const fetchBookings= async id => {
         try{
-            const data = await bookingsAPI.findAll()
+            const data = await bookingAPI.find(id)
             setBookings(data)
             setLoading(false) // j'ai fini de charger
         }catch(error){
@@ -24,10 +38,17 @@ const [bookings, setBookings] = useState([])
     }
 
     useEffect(()=>{
-        fetchBookings()
+        fetchBookings(id)
     }, []);
 
    const formatDate = (str) => moment(str).format('DD/MM/YYYY')
+
+const myBookings = Object.keys(bookings).map(key => {
+        return (
+            <ShowBooking key={key} book={bookings[key]} />
+        )
+    })
+
 return (
 
 
@@ -38,23 +59,10 @@ return (
         <div class="alert alert-secondary mt-4">
             <p>Retrouvez ci-dessous tous vos voyages passés et à venir</p>
         </div>
-        {bookings.map(book =>
-            <div className="row p-3">
-                <div className="col-4">
-                    <img src={"http://marquisedesanges.melissadm.net/uploads/"+book.room.cover} style={{height:"300px"}} alt={book.room.title} className="img-fluid" />
-                    
-                </div>
-                <div className="col-8">
-                    <h4>{book.room.title}</h4>
-                    <p>
-                        Réservation <strong>n°{book.id}</strong><br/>
-                        du {formatDate(book.startDate) } au {formatDate(book.endDate)} ({book.amount} &euro;)
-                    </p>
-                    <Link to={`/booking/${book.id}`} className="btn btn-info">Plus d'informations</Link>
-
-                </div>
-            </div>
-         )}
+        {(myBookings) && (
+                  myBookings    
+         )
+        }
      
     </div>
 </div>
