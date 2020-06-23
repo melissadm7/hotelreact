@@ -38,10 +38,10 @@ const Footer = (props) => {
             <div className="footer-title pb-5">
                 <h4>Liens</h4>
                 <ul className="navbar-nav mr-auto">
-                    <Link href="/" className="pt-2">Accueil</Link>
-                    <Link href="/rooms"className="pt-2">Les chambres</Link>
-                    <Link href="/restaurant"className="pt-2">Restaurant</Link>
-                    <Link href="/activity"className="pt-2">Les activités</Link>
+                    <Link to="/" className="pt-2">Accueil</Link>
+                    <Link to="/rooms"className="pt-2">Les chambres</Link>
+                    <Link to="/restaurant"className="pt-2">Restaurant</Link>
+                    <Link to="/activity"className="pt-2">Les activités</Link>
                 </ul>
             </div>
         </div>
