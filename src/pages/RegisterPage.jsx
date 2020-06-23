@@ -47,6 +47,7 @@ const RegisterPage = ({history}) => {
         try{
             await Axios.post("http://marquisedesanges.melissadm.net/api/users", user)
             setErrors({})
+            toast.success("Bienvenue à l'hôtel Marquise des anges")
             history.replace("/")
         }catch({response}){
             const {violations} = response.data
@@ -56,7 +57,7 @@ const RegisterPage = ({history}) => {
                     apiErrors[propertyPath] = message
                 })
                 setErrors(apiErrors)
-                toast.error("Vous devez remplir les champs !")
+                
             }
         }
     }
