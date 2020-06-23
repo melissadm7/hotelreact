@@ -36,7 +36,7 @@ const MonComptePage = ({history}) => {
          // notif
          history.replace("/") 
           
-          toast.error("Une erreur est survenue ! DOMMAGE")
+          toast.error("Une erreur est survenue !")
         }
     }
 

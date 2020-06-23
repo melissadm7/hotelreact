@@ -1,4 +1,4 @@
-import React, { useContext,useEffect } from 'react'
+import React, { useContext,useEffect,useRef } from 'react'
 import authAPI from '../services/authAPI'
 import {NavLink, Link, withRouter} from "react-router-dom"
 import AuthContext from '../contexts/AuthContext'
@@ -10,6 +10,10 @@ import 'react-toastify/dist/ReactToastify.css';
 const Navbar = (props) => {
 
     const {isAuthenticated, setIsAuthenticated, isAdmin, setIsAdmin } = useContext(AuthContext)
+
+    const burger = useRef(null)
+
+    const myNavbar = useRef(null)
   
     const handleLogout = () => {
         authAPI.logout()
@@ -29,15 +33,20 @@ const Navbar = (props) => {
       }
     })
 
+    const handleClick = (event) => {
+        let nav = myNavbar.current
+        nav.classList.toggle('openBar') 
+    }
+
     return (
 
         <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
             <NavLink className="navbar-brand" to="/"><img src="/images/logo.png" alt=""/></NavLink>
-            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+            <button onClick={handleClick} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
 
-            <div className="collapse navbar-collapse" id="navbar">
+            <div className="collapse navbar-collapse" id="navbar" ref={myNavbar}>
                 <ul className="navbar-nav mr-auto">
                     <li className="nav-item">
                         <NavLink className="nav-link" to="/">Accueil</NavLink>
@@ -62,9 +71,10 @@ const Navbar = (props) => {
            <>
                {(isAdmin) && (
                  <>
-                 <p style={{color:"white"}}>Mon compte</p>
+                 
                 </>
                     )}
+                    <p style={{color:"white"}}>Mon compte</p>
                   <li className="nav-item dropdown" style={{color:"white"}}>
                         <NavLink to="/compte" className="nav-link dropdown-toggle" data-toggle="dropdown" id="accountDropdownLink"  style={{color:"white"}}>
                            

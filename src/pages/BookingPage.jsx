@@ -7,11 +7,16 @@ import { toast } from 'react-toastify'
 import moment from 'moment'
 import Comments from '../components/Comments';
 import AuthContext from '../contexts/AuthContext'
-
+import jwtDecode from "jwt-decode"
 
 const BookingPage = (props) => {
     var {id} = props.match.params
+    const token = window.localStorage.getItem("authToken")
+    const jwtData = jwtDecode(token)
+    var myid= jwtData.id
+
     const {isAuthenticated } = useContext(AuthContext)
+
     const [booking, setBooking] = useState({
         id: "",
         startDate: "",
@@ -24,19 +29,24 @@ const BookingPage = (props) => {
     
     const fetchBooking= async id => {
         try{
-            const data = await bookingsAPI.find(id)
+            const data = await bookingsAPI.findOne(id)
             setBooking(data)
+            
         }catch(error){
            toast.error("Impossible de charger la confirmation de votre réservation ")
         }
     }
 
-
     useEffect(()=>{
         fetchBooking(id)
-    }, []);
+    }, [id]);
 
    const formatDate = (str) => moment(str).format('DD/MM/YYYY')
+
+   useEffect(()=>{
+       //booking.booker &&  parseInt(booking.booker.id) !== parseInt(myid) && props.history.replace('/')
+   },[booking])
+
 return (
 
 
@@ -87,23 +97,26 @@ return (
                     {% else %}
                         <p>Vous ne pourrez pas noter cette annonce tant que votre voyage ne sera pas terminé.</p>
                     {% endif %} */}
-                {(isAuthenticated) ?
-           ( <> <Comments id={id} /> </>) : ( 
-           <> 
-         
-         <div className="error-message"> Vous devez vous connecter pour pouvoir commenter</div> 
+                {(isAuthenticated && booking.room) ?
+                      (  <Comments id={booking.room.id} />) : (  <div className="error-message"> Vous devez vous connecter pour pouvoir commenter</div> )
+                  }
+        
            
-           </>
+         
 
-           )     }
+         
                 </div> 
             </div>
             <div className="col-md-6">
                 <div className="alert alert-light">
-                <h2 className="alert-heading"> Votre "{booking.room.title}"<Link to="#"></Link></h2>
+                {booking.room && 
+                    <> 
+                    <h2 className="alert-heading"> Votre "{booking.room.title}"<Link to="#"></Link></h2>
 
-                    <img  src={"http://marquisedesanges.melissadm.net/uploads/" + booking.room.cover}  alt="image de" className="img-fluid"/>
-                    <Link to="" className="btn btn-primary mt-4">Plus d'informations</Link>
+                        <img  src={"http://marquisedesanges.melissadm.net/uploads/" + booking.room.cover}  alt="image de" className="img-fluid"/>
+                        <Link to={"/rooms/"+booking.room.id} className="btn btn-primary mt-4">Plus d'informations</Link>
+                    </>    
+                }  
                 </div>
             </div>
         </div>

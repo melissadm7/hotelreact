@@ -140,7 +140,7 @@ return (
            </> ): (
            <> 
            
-           <h3>Ce Grand Prix n'a pas encore reçu de commentaire ...</h3>
+           <h3>Cette chambre n'a pas encore reçu de commentaire ...</h3>
            
            </> )}
            

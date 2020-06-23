@@ -75,6 +75,11 @@ i{
   height: 599px;
 }
 
+.openBar{
+  display: block!important;
+}
+
+
 
 .navbar-expand-lg .navbar-nav .dropdown-menu {
     position: absolute;

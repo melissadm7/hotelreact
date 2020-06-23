@@ -3,11 +3,13 @@ import moment from 'moment'
 import jwtDecode from "jwt-decode"
 import { toast } from 'react-toastify';
 import Axios from 'axios';
+import { useHistory } from "react-router-dom";
 
 
 
 const Comments = (props) => {
-
+    const history = useHistory();
+    
     const token = window.localStorage.getItem("authToken")
     const jwtData = jwtDecode(token)
     var myid= jwtData.id
@@ -48,10 +50,12 @@ const Comments = (props) => {
        try{
            await Axios.post('http://marquisedesanges.melissadm.net/api/comments', newComment)
            toast.success('Votre commentaire a bien été envoyé')
+           history.push('/')
            
        }catch({response}){
            const apiErrors = {}
           const {violations} = response.data
+          
           if(violations){
             violations.forEach(({propertyPath, message}) => {
                 apiErrors[propertyPath] = message

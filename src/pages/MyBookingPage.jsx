@@ -32,6 +32,7 @@ const [bookings, setBookings] = useState({
             const data = await bookingAPI.find(id)
             setBookings(data)
             setLoading(false) // j'ai fini de charger
+            console.log(data)
         }catch(error){
            toast.error("Impossible de charger vos réservations")
         }
@@ -45,7 +46,7 @@ const [bookings, setBookings] = useState({
 
 const myBookings = Object.keys(bookings).map(key => {
         return (
-            <ShowBooking key={key} book={bookings[key]} />
+          <ShowBooking key={key} book={bookings[key]} />
         )
     })
 
@@ -59,9 +60,8 @@ return (
         <div class="alert alert-secondary mt-4">
             <p>Retrouvez ci-dessous tous vos voyages passés et à venir</p>
         </div>
-        {(myBookings) && (
-                  myBookings    
-         )
+        {
+           myBookings
         }
      
     </div>

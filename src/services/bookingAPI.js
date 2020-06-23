@@ -6,6 +6,11 @@ function findAll(){
 }
 function find(id){
     return Axios.get(`http://marquisedesanges.melissadm.net/api/users/${id}/bookings`)
+                .then(response=>response.data['hydra:member'])
+}
+
+function findOne(id){
+    return Axios.get(`http://marquisedesanges.melissadm.net/api/bookings/${id}`)
                 .then(response=>response.data)
 }
 
@@ -13,4 +18,5 @@ function find(id){
 export default {
     findAll:findAll,
     find: find,
+    findOne: findOne
 } 

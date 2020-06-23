@@ -110,7 +110,7 @@ const BookPage = (props) => {
             const days = interval / (24 * 60 * 60 * 1000);
             const amount = days *  room.price ;
 
-            setMyAmount(amount.toLocaleString('fr-FR'))
+            setMyAmount(amount)
             setMyDays(days)
             
 
@@ -184,7 +184,7 @@ return (
                     // value={comment.content}
                     onChange={handleChange}
                 />
-                <h5>Montant du séjour: <span id="amount"> {myAmount} </span> &euro;</h5>
+                <h5>Montant du séjour: <span id="amount"> {myAmount && myAmount.toLocaleString()} </span> &euro;</h5>
                 <span id="days">{myDays}</span> nuit(s) à  / nuit
             </div>
             <div className=" offset-1 col-md-4 col-xs-12 pt-3">

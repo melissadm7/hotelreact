@@ -1,6 +1,6 @@
 import React,{ useState }  from 'react';
 import './App.css';
-import { BrowserRouter, Switch, Route , withRouter} from "react-router-dom"
+import { HashRouter, Switch, Route , withRouter} from "react-router-dom"
 import PrivateRoute from './components/PrivateRoute'
 import { ToastContainer, toast } from 'react-toastify';
 import Navbar from './components/Navbar'
@@ -41,7 +41,7 @@ function App() {
   return (
 <>
 <AuthContext.Provider value={contextValue}>
-    <BrowserRouter>
+    <HashRouter>
       <NavbarWithRouter />
         <Switch>
           <Route path="/login" component={LoginPage}/>
@@ -59,7 +59,7 @@ function App() {
           <Route path="/" component={HomePage} />
         </Switch>
         <Footer />
-    </BrowserRouter>
+    </HashRouter>
     <ToastContainer position={toast.POSITION.BOTTOM_LEFT} />
     </AuthContext.Provider>
  
