@@ -92,7 +92,7 @@ const ModifPasswordPage = ({history}) => {
                 />
                 <div className="form-group">
                     <button type="submit" className="btn btn-success">Enregistrer</button>
-                    <Link to="/compte" className="btn btn-secondary">Retour</Link>
+                    <Link to="/compte" className="btn btn-secondary  ml-3">Retour</Link>
                 </div>
             </form>
             </div>

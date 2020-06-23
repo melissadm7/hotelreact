@@ -41,7 +41,7 @@ return (
 
 
 <>  
-<div className="slide">
+<div className="slide" style={{height:"100vh"}}>
     <div className="container">
         <h1>Votre réservation (n°{booking.id})</h1>
         

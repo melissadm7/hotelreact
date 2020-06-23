@@ -19,4 +19,6 @@ function updateComment(id,comment){
 export default {
     findAll:findAll,
     find: find,
+    update: updateComment,
+    create: createComment
 } 

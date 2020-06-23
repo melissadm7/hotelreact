@@ -8,9 +8,9 @@ const ShowComment = ({comment}) => {
     return ( 
         <>
         {(comment) && (
-  <div class=" rounded mb-3 py-3 px-3">
-  <strong>{ comment.author.firstName } { comment.author.lastName}</strong>, le  {formatDate(comment.createdAt)} a dit: 
-  <br/>
+                        <div class=" rounded mb-3 py-3 px-3">
+                        <strong>{ comment.author.firstName } { comment.author.lastName}</strong>, le  {formatDate(comment.createdAt)} a dit: 
+                        <br/>
                               <blockquote>
                                   {comment.content}
                               </blockquote>

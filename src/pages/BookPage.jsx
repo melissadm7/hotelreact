@@ -49,7 +49,6 @@ const BookPage = (props) => {
     const [theEndDate, setTheEndDate] = useState(new Date()) 
 
     const [booking, setBooking] = useState({
-        
         startDate: "",
         endDate: "",
         amount: "",
@@ -142,7 +141,7 @@ const BookPage = (props) => {
         try{
             await Axios.post("http://marquisedesanges.melissadm.net/api/bookings",newBooking )
             setErrors({})
-            props.history.replace("/")
+            props.history.replace(`/booking/${booking.id}`)
             toast.success("Merci de votre réservation !")
         }catch({response}){
             const {violations} = response.data

@@ -80,7 +80,7 @@ const MonComptePage = ({history}) => {
         <>
         <div className="slide">
         <div className="container">
-            <h1>Modification de l'utilisateur</h1>  <Link to="/passwordupdate" className="btn btn-secondary">Modification du mot de passe</Link>    
+            <h1>Modification de l'utilisateur</h1>   
             
             <form onSubmit={handleSubmit}>
                 <Field 
@@ -112,7 +112,7 @@ const MonComptePage = ({history}) => {
                 />
                 <div className="form-group">
                     <button type="submit" className="btn btn-success">Enregistrer</button>
-                    <Link to="/compte" className="btn btn-secondary ml-5">Retour</Link>
+                    <Link to="/compte" className="btn btn-secondary ml-3">Retour</Link>
                 </div>
             </form>
            

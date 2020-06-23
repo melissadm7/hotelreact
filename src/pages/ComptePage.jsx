@@ -25,7 +25,7 @@ return (
   <>  
 <div className="slide">
     <div className="container">
-        <div className="pt-5 text-center"><h1>Bonjour, { user.lastName }</h1></div>
+        <div className="pt-5 text-center"><h1>Mon compte</h1></div>
         
         <div className="row pt-5 text-center">
             <div className="col-md-3 pt-4 square1 ">
@@ -35,7 +35,7 @@ return (
                 <Link to="/passwordupdate" className="btn btn-primary mb-1">Modifier votre mot de passe</Link>
             </div>
             <div className="col-md-3 pt-4 square3">
-                <Link to="#" className="btn btn-primary mb-1">Vos réservations </Link>
+                <Link to="/myBooking" className="btn btn-primary mb-1">Vos réservations </Link>
             </div>               
         </div>         
     </div>

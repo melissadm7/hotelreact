@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
+import React, { useContext,useEffect } from 'react'
 import authAPI from '../services/authAPI'
-import {NavLink} from "react-router-dom"
+import {NavLink, Link, withRouter} from "react-router-dom"
 import AuthContext from '../contexts/AuthContext'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -18,6 +18,16 @@ const Navbar = (props) => {
         toast.info("Vous êtes déconnecté")
         props.history.push("/login")
     }
+    useEffect(() => {
+
+      const unlisten = props.history.listen(() => {
+        window.scrollTo(0,0);
+
+      });
+      return() => {
+        unlisten();
+      }
+    })
 
     return (
 
@@ -52,30 +62,25 @@ const Navbar = (props) => {
            <>
                {(isAdmin) && (
                  <>
-                    <li className="nav-item dropdown">
-                        <NavLink to="#" className="nav-link dropdown-toggle" data-toggle="dropdown" id="accountDropdownLink"  style={{color:"#deb666"}}>
-                          
-                        </NavLink>
-                        <div className="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdownLink">
-                            <div className="dropdown-divider"></div>
-                            <NavLink to="/compte" className="dropdown-item">Mon compte</NavLink>
-                            <NavLink to="#" className="dropdown-item">Admin Panel</NavLink>
-                            <div className="dropdown-divider"></div>
-                            <button onClick={handleLogout} className="btn btn-danger">Déconnexion</button>
-                        </div>
-                    </li>
+                 <p style={{color:"white"}}>Mon compte</p>
                 </>
                     )}
-                  <li className="nav-item dropdown">
-                        <NavLink to="#" className="nav-link dropdown-toggle" data-toggle="dropdown" id="accountDropdownLink"  style={{color:"#deb666"}}>
+                  <li className="nav-item dropdown" style={{color:"white"}}>
+                        <NavLink to="/compte" className="nav-link dropdown-toggle" data-toggle="dropdown" id="accountDropdownLink"  style={{color:"white"}}>
                            
                         </NavLink>
                         <div className="dropdown-menu dropdown-menu-right" aria-labelledby="accountDropdownLink">
                             <div className="dropdown-divider"></div>
-                            <NavLink to="#" className="dropdown-item">Mon compte</NavLink>
-                            <NavLink to="#" className="dropdown-item">Mes réservations</NavLink>
+                            <NavLink to="/compte" className="dropdown-item">Mon compte</NavLink>
+                        {(isAdmin) && (
+                <>
+                   <a href="http://marquisedesanges.melissadm.net/admin/login" className="dropdown-item">Admin Panel</a>
+                </>
+                )}
+                            
+                            
                             <div className="dropdown-divider"></div>
-                            <button onClick={handleLogout} className="btn btn-danger">Déconnexion</button>
+                            <button onClick={handleLogout} className="btn btn-danger ml-3">Déconnexion</button>
                         </div>
                     </li>
                    

@@ -2,17 +2,20 @@ import React, {useState, useEffect} from 'react'
 import roomsAPI from "../services/roomsAPI"
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import roomsLoader from '../components/loaders/roomsLoader'
 
 
 
 
 const RoomsPage = (props) => {
   const [rooms, setRooms] = useState([])
-    
+  
+  const [loading, setLoading] = useState(true)
     const fetchRooms= async () => {
         try{
             const data = await roomsAPI.findAll()
             setRooms(data)
+            setLoading(false) // j'ai fini de charger
         }catch(error){
            toast.error("Impossible de charger les chambres")
         }
@@ -24,8 +27,11 @@ const RoomsPage = (props) => {
 return (   
   <> 
 <div className="slide">
+{(!loading) ? (
     <div className="container pb-5">
+        
         <h1 className="mb-5">Les chambres</h1>
+        
         {rooms.map(rooms =>
           <div className="card mb-3" style={{maxwidth: "1200px"}} key={rooms.id}>
             <div className="row no-gutters">
@@ -55,6 +61,9 @@ return (
         </div>
         )}
     </div>
+     ) : (
+        <roomsLoader />
+    )}
 </div>
 </>
 );

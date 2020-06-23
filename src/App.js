@@ -15,6 +15,7 @@ import RoomPage from './pages/RoomPage'
 import BookPage from './pages/BookPage'
 import BookingPage from './pages/BookingPage'
 import RegisterPage from './pages/RegisterPage'
+import MyBookingPage from './pages/MyBookingPage'
 import AuthContext from './contexts/AuthContext'
 import MonComptePage from './pages/MonComptePage'
 import ModifPasswordPage from './pages/ModifPasswordPage'
@@ -22,6 +23,7 @@ import authAPI from './services/authAPI'
 
 
 import {Bootstrap, Grid, Row, Col} from 'react-bootstrap';
+
 authAPI.setup() //permet de garder le token au rechargement
 
 function App() {
@@ -48,6 +50,7 @@ function App() {
           <PrivateRoute path="/myaccount" component={MonComptePage}/>      
           <PrivateRoute path="/rooms/:id/book" component={BookPage} />
           <PrivateRoute path="/booking/:id" component={BookingPage} />
+          <PrivateRoute path="/myBooking" component={MyBookingPage}/>  
           <PrivateRoute path="/compte" component={ComptePage}/>          
           <Route path="/rooms/:id" component={RoomPage} />
           <Route path="/rooms" component={RoomsPage}/>

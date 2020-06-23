@@ -11,6 +11,7 @@ import { Carousel } from 'react-responsive-carousel';
 
 
 
+
 const RoomPage = (props) => {
 
 
@@ -125,7 +126,7 @@ return (
                     </div>
                 </div>
                 <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                <div className="alert alert-info" style={{backgroundColor:"#23232e", color:'#f7efeb'}}>
+                <div className="alert alert-info" style={{backgroundColor:"#343434", color:'#f7efeb'}}>
                 
                      <div className="row align-items-center">
                      <h2 className="mb-3">Commentaires</h2>
