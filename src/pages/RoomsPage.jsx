@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import roomsLoader from '../components/loaders/roomsLoader'
 
-
-
-
 const RoomsPage = (props) => {
   const [rooms, setRooms] = useState([])
   
@@ -20,7 +17,6 @@ const RoomsPage = (props) => {
            toast.error("Impossible de charger les chambres")
         }
     }
-
     useEffect(()=>{
         fetchRooms()
     }, []);
@@ -29,9 +25,7 @@ return (
 <div className="slide">
 {(!loading) ? (
     <div className="container pb-5">
-        
         <h1 className="mb-5">Les chambres</h1>
-        
         {rooms.map(rooms =>
           <div className="card mb-3" style={{maxwidth: "1200px"}} key={rooms.id}>
             <div className="row no-gutters">
@@ -68,5 +62,4 @@ return (
 </>
 );
 }
-
 export default RoomsPage;
