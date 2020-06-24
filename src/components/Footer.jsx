@@ -28,7 +28,7 @@ const Footer = (props) => {
             <div className="footer-title mb-5">
                 <h4>Marquise des anges</h4>
                 <p className="pt-2" >
-                    L'hôtel Marquise des anges, un hôtel cinq étoiles situé sur la plus grande des îles Nuku Hiva, sompteuse et surprenante et vous repartirez conquis et émerveillé!
+                    L'hôtel Marquise des anges, un hôtel cinq étoiles situé sur la plus grande des îles Nuku Hiva, somptueuse et surprenante et vous repartirez conquis et émerveillé!
                     
                 </p>
                 

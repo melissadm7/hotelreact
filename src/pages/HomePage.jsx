@@ -103,7 +103,7 @@ return (
         <div className="container">
             <div className="row" >
                 <div className="col-lg-6">
-                    {restaurants.slice(0,1).sort((b,a)=> a.title - b.image).map((restaurant,key) =>
+                    {restaurants.slice(4,5).sort((b,a)=> a.title - b.image).map((restaurant,key) =>
                         <img src={"http://marquisedesanges.melissadm.net/uploads/"+restaurant.image} alt={restaurant.title} class="coverimg"style={{position:"relatif"}} />
                     )}
                     {restaurants.slice(2,3).sort((b,a)=> a.title - b.image).map((restaurant,key) =>
