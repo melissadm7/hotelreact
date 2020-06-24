@@ -74,7 +74,7 @@ const Navbar = (props) => {
                  
                 </>
                     )}
-                    <p style={{color:"white"}}>Mon compte</p>
+                    <p style={{color:"#deb666"}}>Mon compte</p>
                   <li className="nav-item dropdown" style={{color:"white"}}>
                         <NavLink to="/compte" className="nav-link dropdown-toggle" data-toggle="dropdown" id="accountDropdownLink"  style={{color:"white"}}>
                            
@@ -84,7 +84,7 @@ const Navbar = (props) => {
                             <NavLink to="/compte" className="dropdown-item">Mon compte</NavLink>
                         {(isAdmin) && (
                 <>
-                   <a href="http://marquisedesanges.melissadm.net/admin/login" className="dropdown-item">Admin Panel</a>
+                   <a href="http://marquisedesanges.melissadm.net/admin/login" className="dropdown-item">Administration</a>
                 </>
                 )}
                             

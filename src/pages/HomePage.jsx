@@ -127,7 +127,7 @@ return (
         <div className="container">
                 <div className="row justify-content-end">
                     <div className="bloc col-lg-6 col-md-12 ">
-                     <div className="carousel slides pt-3" data-ride="carousel" id="quote-carousel">
+                     <div className="carousel slides pt-2" data-ride="carousel" id="quote-carousel">
                         <strong><h5>Marquise des Anges est un magnifique hôtel de luxe cinq étoiles situé sur une ile paradisiaque. 
                         Vous y vivrez des vacances inoubliables les pieds dans l'eau. Le rêve polynésien!</h5></strong>
                         

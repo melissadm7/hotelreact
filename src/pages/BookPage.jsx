@@ -185,7 +185,7 @@ return (
                     onChange={handleChange}
                 />
                 <h5>Montant du séjour: <span id="amount"> {myAmount && myAmount.toLocaleString()} </span> &euro;</h5>
-                <span id="days">{myDays}</span> nuit(s) à  / nuit
+                <span id="days">{myDays}</span> nuit(s) à {room.price} / nuit
             </div>
             <div className=" offset-1 col-md-4 col-xs-12 pt-3">
                 <div className="card text-white bg-dark mb-3 p-2" style={{maxWidth: "18rem" }}>
