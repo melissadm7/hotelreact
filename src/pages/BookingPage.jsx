@@ -61,7 +61,7 @@ return (
             </div>
 
         <div className="row">
-            <div className="col-md-6 detailAvis p-4">
+            <div className="col-md-6 detailAvis mb-4">
                 <div className="">
                     <h2 style={{color:"white"}}>Détails</h2>
                     <div className="row pt-4">
