@@ -7,11 +7,14 @@ import { toast } from 'react-toastify'
 
 const ActivityPage = (props) => {
   const [activities, setActivities] = useState([])
+   // loading 
+    const [loading, setLoading] = useState(true)
     
   const fetchActivities= async () => {
       try{
           const data = await activityAPI.findAll()
           setActivities(data)
+          setLoading(false) // j'ai fini de charger 
       }catch(error){
          toast.error("Impossible de charger les activités")
       }
@@ -23,6 +26,7 @@ const ActivityPage = (props) => {
 return (   
   <> 
     <div className="slide">
+    {(!loading) ? (
     <div className="container">
         <h1>Les activités</h1>
         <div className="row pb-5">
@@ -46,6 +50,19 @@ return (
                 )}
         </div>
     </div>
+     ) : (
+                 <div className="container" style={{position:"absolute",top:"50%",left:"45%",color:"#d2b666"}}>
+                <div class="spinner-grow" role="status">
+                    <span class="sr-only" >Loading...</span>
+                </div>
+                <div class="spinner-grow" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow" role="status">
+                    <span class="sr-only" >Loading...</span>
+                </div>
+                </div>
+            )}
 </div>
 </>
 );

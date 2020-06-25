@@ -2,17 +2,21 @@ import React, {useState, useEffect} from 'react'
 import roomsAPI from "../services/roomsAPI"
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import roomsLoader from '../components/loaders/roomsLoader'
+
 
 const RoomsPage = (props) => {
   const [rooms, setRooms] = useState([])
   
-  const [loading, setLoading] = useState(true)
+  // loading 
+    const [loading, setLoading] = useState(true)
+
+
+
     const fetchRooms= async () => {
         try{
             const data = await roomsAPI.findAll()
             setRooms(data)
-            setLoading(false) // j'ai fini de charger
+            setLoading(false) // j'ai fini de charger 
         }catch(error){
            toast.error("Impossible de charger les chambres")
         }
@@ -23,7 +27,8 @@ const RoomsPage = (props) => {
 return (   
   <> 
 <div className="slide">
-{(!loading) ? (
+
+  {(!loading) ? (
     <div className="container pb-5">
         <h1 className="mb-5">Les chambres</h1>
         {rooms.map(rooms =>
@@ -55,9 +60,19 @@ return (
         </div>
         )}
     </div>
-     ) : (
-        <roomsLoader />
-    )}
+           ) : (
+                 <div className="container" style={{position:"absolute",top:"50%",left:"45%",color:"#d2b666"}}>
+                <div class="spinner-grow" role="status">
+                    <span class="sr-only" >Loading...</span>
+                </div>
+                <div class="spinner-grow" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow" role="status">
+                    <span class="sr-only" >Loading...</span>
+                </div>
+                </div>
+            )}
 </div>
 </>
 );

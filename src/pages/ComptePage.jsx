@@ -29,13 +29,13 @@ return (
         
         <div className="row pt-5 text-center">
             <div className="col-md-3 pt-4 square1 ">
-                <Link to="/myaccount" className="btn btn-primary mr-1 mb-1">Modifier vos informations</Link>
+                <Link to="/myaccount" className="btn mr-1 mb-1" style={{backgroundColor:"white;"}}>Modifier vos informations</Link>
             </div>
             <div className="col-md-3 pt-4 square2">
-                <Link to="/passwordupdate" className="btn btn-primary mb-1">Modifier votre mot de passe</Link>
+                <Link to="/passwordupdate" className="btn mb-1">Modifier votre mot de passe</Link>
             </div>
             <div className="col-md-3 pt-4 square3">
-                <Link to="/myBooking" className="btn btn-primary mb-1">Vos réservations </Link>
+                <Link to="/myBooking" className="btn mb-1">Vos réservations </Link>
             </div>               
         </div>         
     </div>

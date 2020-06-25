@@ -2,13 +2,12 @@ import React, {useState, useEffect} from 'react'
 import restaurantAPI from "../services/restaurantAPI"
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import restaurantLoader from '../components/loaders/restaurantLoader'
+
 
 
 const RestaurantPage = (props) => {
     const [restaurants, setRestaurants] = useState([])
-
-    // loading 
+ // loading 
     const [loading, setLoading] = useState(true)
     
     const fetchRestaurants= async () => {
@@ -28,6 +27,7 @@ const RestaurantPage = (props) => {
 return (   
   <> 
     <div className="slide">
+    {(!loading) ? (
         <div className="container">
           
             <h1>Restaurant</h1>
@@ -72,7 +72,19 @@ return (
                 </div>
             </div>
         </div>
-
+) : (
+                 <div className="container" style={{position:"absolute",top:"50%",left:"45%",color:"#d2b666"}}>
+                <div class="spinner-grow" role="status">
+                    <span class="sr-only" >Loading...</span>
+                </div>
+                <div class="spinner-grow" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+                <div class="spinner-grow" role="status">
+                    <span class="sr-only" >Loading...</span>
+                </div>
+                </div>
+            )}
     </div>
 </>
 );

@@ -11,7 +11,6 @@ import { toast } from 'react-toastify'
 
 const LoginPage = (props) => { 
 
-
     const {setIsAuthenticated,setIsAdmin,isAdmin} = useContext(AuthContext)
 
     const [credentials, setCredentials] = useState({
@@ -39,8 +38,7 @@ const handleSubmit = async (event) => {
         const data = jwtDecode(response)
         for(var role of data.roles){
             if(role === 'ROLE_ADMIN'){
-                setIsAdmin(true)
-                
+                setIsAdmin(true)  
              
             }
         
@@ -94,6 +92,7 @@ return isAuthenticated ? (
                         </div>
                     </div>
                 </div>
+                
             </div>
 
         </>
