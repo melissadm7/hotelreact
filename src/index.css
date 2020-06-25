@@ -515,6 +515,11 @@ background-size: auto 100%;
     cursor: pointer;
     color: #465798;
 }
+h5, .h5 {
+  font-size: 1.25rem;
+  color: black;
+}
+
 /**********************PAGE RESTO*******************************/
 
 .info{
