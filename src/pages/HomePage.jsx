@@ -103,17 +103,17 @@ return (
         <div className="container">
             <div className="row" >
                 <div className="col-lg-6">
-                    {restaurants.slice(4,5).sort((b,a)=> a.title - b.image).map((restaurant,key) =>
+                    {restaurants.slice(2,3).sort((b,a)=> a.title - b.image).map((restaurant,key) =>
                         <img src={"http://marquisedesanges.melissadm.net/uploads/"+restaurant.image} alt={restaurant.title} class="coverimg"style={{position:"relatif"}} />
                     )}
-                    {restaurants.slice(2,3).sort((b,a)=> a.title - b.image).map((restaurant,key) =>
+                    {restaurants.slice(3,4).sort((b,a)=> a.title - b.image).map((restaurant,key) =>
                         <img src={"http://marquisedesanges.melissadm.net/uploads/"+restaurant.image} alt={restaurant.title} class="image-Act-left"style={{position:"relatif"}} />
                     )}
      
                 </div>
                 <div className=" carteresto offset-1 col-lg-5 pt-5">
                     <h1 className="title">Notre carte.. <Link to="/restaurant"><svg id="Layer_1" enable-background="new 0 0 42 42" height="42" viewBox="0 0 512 512" width="40" xmlns="http://www.w3.org/1000/svg" style={{marginLeft: "-10px"}}><path d="m256 0c-141.385 0-256 114.615-256 256s114.615 256 256 256 256-114.615 256-256-114.615-256-256-256zm59.313 267.314-72 72c-3.124 3.124-7.219 4.687-11.313 4.687-14.126 0-21.421-17.206-11.313-27.313l60.686-60.687-60.686-60.687c-6.249-6.248-6.249-16.379 0-22.627 6.248-6.248 16.379-6.248 22.627 0l72 72c6.248 6.249 6.248 16.379-.001 22.627z"/></svg>  </Link></h1>   
-                    {restaurants.slice(0,2).sort((b,a)=> a.title - b.content ).map((restaurant,key) =>
+                    {restaurants.slice(2,4).sort((b,a)=> a.title - b.content ).map((restaurant,key) =>
                         <div>
                         <h3><strong>{restaurant.title}</strong></h3>
                         <p>{restaurant.content}</p>
